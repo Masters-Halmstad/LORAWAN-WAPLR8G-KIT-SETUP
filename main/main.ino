@@ -16,7 +16,7 @@
  *   
  *   Disclaimer: 
  *  -  While using Arduino UNO, it is recommended to disconnect the Arduino <-> LoRa-E5,
- *     as it only have one set of TX-RX pins
+ *     while uploading the board, as it only have one set of TX-RX pins
  *  - Other board rather than Arduino Mega, may face problem with serial monitor 
  */
 

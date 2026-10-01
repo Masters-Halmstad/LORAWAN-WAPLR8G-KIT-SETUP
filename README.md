@@ -2,7 +2,7 @@
 
 A LoRaWAN proof-of-concept setup for MikroTik wAP LR8G kit.  It uses MikroTik wAP LR8G gateway for lorawan networking and an HC-SR04 ultrasonic sensor, Arduino Mega, Seeed Studio LoRa-E5 Dev Board, and The Things Stack for the testing purposes.
 
-For the testing the system measures distance with an ultrasonic sensor(HC-SR04)and Arduino Mega(Can be used any dev board), transmits the reading over LoRaWAN, forwards it through the MikroTik gateway, and displays the received data in The Things Stack.
+For the testing the system measures distance with an ultrasonic sensor(HC-SR04)and Arduino Mega(Any dev board can be used), transmits the reading over LoRaWAN, forwards it through the MikroTik gateway, and displays the received data in The Things Stack.
 
 > **Project status:** Prototype / educational setup  
 > **Region:** Sweden; configure all LoRaWAN components for the appropriate regional plan, expected to be EU868.
@@ -146,7 +146,7 @@ Use either WebFig or WinBox.
 
 
 - Default management address: `http://192.168.88.1`
-- WinBox is recommended when IP access is uncertain because it can discover and connect through the MikroTik MAC address **(Used in this setup)**.
+- **WinBox is recommended** when IP access is uncertain because it can discover and connect through the MikroTik MAC address **(Used in this setup)**.
 
 If your laptop does not receive an address automatically, temporarily set its Ethernet adapter to:
 
@@ -164,11 +164,11 @@ http://192.168.88.1
 ```
 
 > ⚠️ **Troubleshooting — `192.168.88.1` does not open**  
-> If you're using winFig or want to access via ip address, make sure wap-lr8g is getting internet access (directly connect it with wifi router or let you laptop share it's internet access via lan port). Also your device and wap-lr8g should be on the same network.
-> Note that , For this setup internet access to wap-lr8g is not mandatory. 
+> If you're using winFig or want to access via ip address, make sure wap-lr8g is getting internet access (directly connect it with wifi router or let your laptop share it's internet access via lan port). Also your device and wap-lr8g should be on the same network.
+> Note that , In this step internet access to wap-lr8g is not mandatory. 
 > Disconnect Wi-Fi temporarily during local setup if routing becomes confusing. Open WinBox, use the Neighbors discovery list, and connect through the device MAC address.
 
-- A successfull mac address connection shoud look like this, with mac address listing in Neighbors discovery list :
+- A successfull mac address connection shoud look like this, with mac address listing in **Neighbors** discovery list :
 
 ![alt text](Assets/winbox.png)
 
@@ -186,7 +186,7 @@ http://192.168.88.1
 2. Log in to The Things Stack Console.
 3. Create or open the gateway entry.
 4. Enter the MikroTik gateway EUI exactly as printed.
-5. Choose tge gatewayID (A unique readable name, such as hogs-wap-test)
+5. Choose the gatewayID (A unique readable name, such as hogs-wap-test)
 6. Select the correct frequency plan **Europe 863-870 MHz recomended for europe**.
 7. Gateway server address: Leave the default unless the console specifies another address
 6. Save the gateway.
@@ -397,18 +397,18 @@ Independent power GND -------> Common GND with Arduino
 
 > ⚠️ **Electrical safety note**  
 > If face problem with transmission from Arduino to LoRa-e5 Dev board, one reason may be because Arduino Mega TX1 is 5 V logic while the LoRa-E5 RX is 3.3 V logic. Use a proper logic-level converter or resistor divider between Mega TX1 and LoRa-E5 RX. However, this was not needed during this setup
-> **Do not use arduino 5V power supply to power the lora-e5 board or vice versa, rather use seperate power supply for both while connecting their ground for UART transmission reference**
+> **Do not use arduino 5V power supply to power the lora-e5 board or vice versa, rather use separate power supply for both while connecting their ground for UART transmission reference**
 ![alt text](Assets/schematics.jpeg)
 
 
 ## Test Setup
 
-1. Download the code from above 
-2. Complie , upload and run the code 
+1. Download the code from above **main.ino**
+2. Compile, upload and run the code 
 3. **Important** Set the baud rate for arduino board specific. E.g. 115200 for arduino mega 
 4. **Things Stack Payload Formatter**: The setup is sending the raw data and thus payload formatter is needed at the thing stack. 
-    - Download the formatter code form formater.js
-    - Add the payoad formater inside the the things stack :
+    - Download the formatter code from **formatter.js**
+    - Add the payload formatter inside the the things stack :
         `Application > "your application" > End devices > "your-end-device" > Device Overview > Payload Formatter`
 
 ## Output and Test Results
@@ -476,7 +476,7 @@ Potential future improvements:
 
 ## Disclaimer
 
-This documentation is based only on the Microtik wAP-LR8G-kit setup discussions and is intended for an educational prototype. All devices, setup room and connectivity are the property of Halmstad Univeristy (Högskolan i Halmstad). The device is use for internal experiment purpose and : 
+This documentation is based only on the Microtik wAP-LR8G-kit setup discussions and is intended for an educational prototype. All devices, setup room and connectivity are the property of Halmstad Univeristy (Högskolan i Halmstad). The device is use for internal experimental purpose and : 
 
 - The exact RouterOS version, Windows version, LoRa-E5 baud rate, final payload scaling, and final frequency-plan values must be verified before final use.
 - The wAP LR8G configuration screens can differ between RouterOS versions.
@@ -507,7 +507,7 @@ This documentation is based only on the Microtik wAP-LR8G-kit setup discussions 
 - Seeed Studio LoRa-E5 AT command specification:  
   https://files.seeedstudio.com/products/317990687/res/LoRa-E5+AT+Command+Specification_V1.0+.pdf
 
-  ## Setup and Doc prepared by :
-  [Binay Kumar Sah - Master Student in DEIS V25](https://github.com/Binay432)
+## Setup and Doc prepared by :
+ [Binay Kumar Sah](https://github.com/Binay432) - Master Student in DEIS V25
 
   
